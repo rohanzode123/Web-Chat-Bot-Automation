@@ -1,0 +1,87 @@
+# Chatbot Automation Test Runner Configuration
+
+bot:
+  # Preview URL of the RZ-Work web bot
+  url: "https://staging.chat360.io/web_bot/?h=99c3077e-4288-4b48-b9e6-6888f7e72ebd+website&preview=1"
+  headless: true
+  viewport:
+    width: 1280
+    height: 800
+
+selectors:
+  # Optional iframe selector (leave empty/null to auto-detect or use main page)
+  iframe: null
+  
+  # Chat text input box
+  input_box: "input[placeholder*='message' i], input[class*='_input_'], input[type='text'], input[type='tel']"
+  
+  # Send button next to input
+  send_button: "button[aria-label='Send message'], button[class*='_sendButton']"
+  
+  # Bot message bubble (matches both in welcome view and conversation view)
+  bot_message_bubble: "div[data-bot-messagebox-bubble='true'], div[class*='_messageWrapper_'], div[class*='_greeting_']"
+  
+  # User message bubble
+  user_message_bubble: "div[class*='_userMessageBox_'], div[class*='_userMessage']"
+  
+  # Bot typing / loading indicator
+  typing_indicator: "div[class*='_loader_'], div[class*='typing'], div[class*='_loaderGlass_']"
+  
+  # Quick reply buttons / action chips
+  quick_reply_button: "button:not([aria-label]), div[role='button']"
+  
+  # Chat reset / refresh button
+  refresh_button: "button[aria-label='Refresh']"
+
+timeouts:
+  # Max time to wait for initial page load (ms)
+  page_load_ms: 60000
+  
+  # Max time to wait for initial bot greeting (ms)
+  greeting_wait_ms: 15000
+  
+  # Max timeout for bot to reply to a message (seconds)
+  bot_reply_timeout_s: 30
+  
+  # Stability check: no new bot messages for N seconds
+  quiet_period_s: 3.0
+  
+  # Delay between keystrokes in ms (human-like typing)
+  typing_delay_ms: 40
+
+comparison:
+  # Default comparison mode: 'exact', 'contains', or 'semantic'
+  mode: "semantic"
+  
+  # Fuzzy matching threshold (0-100) when using rapidfuzz fallback
+  rapidfuzz_threshold: 80
+  
+  # Pluggable LLM provider if API key is provided: 'gemini', 'openai', or 'none'
+  llm_provider: "auto"
+  gemini_model: "gemini-1.5-flash"
+  openai_model: "gpt-4o-mini"
+
+execution:
+  # Number of retries for failed or errored steps
+  max_retries: 2
+  
+  # Capture screenshots on failed/error/timeout test cases
+  screenshot_on_failure: true
+  screenshots_dir: "screenshots"
+
+excel:
+  input_file: "test_cases.xlsx"
+  # Mapping of column names (makes column names configurable)
+  columns:
+    test_id: "TestID"
+    question: "Question"
+    expected_answer: "ExpectedAnswer"
+    category: "Category"
+    conversation: "Conversation"
+    mode: "Mode"
+  pre_messages_sheet: "PreMessages"
+
+# Optional list of setup messages to send before running tests in a fresh session
+# (e.g. if the bot requires Name and Phone before allowing custom questions)
+pre_messages: []
+

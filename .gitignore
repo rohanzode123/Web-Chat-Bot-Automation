@@ -1,0 +1,31 @@
+# Python
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.npm
+.vite
+
+# Environment & Secrets
+.env
+.env.local
+
+# Screenshots & Temporary Test Runs
+screenshots/*.png
+!screenshots/.gitkeep
+*.log
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

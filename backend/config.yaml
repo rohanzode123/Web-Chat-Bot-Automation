@@ -1,0 +1,44 @@
+bot:
+  headless: true
+  url: https://staging.chat360.io/web_bot/?h=70cdc13d-aac1-4a59-b025-58dc3275a420+website&preview=1
+  viewport:
+    height: 800
+    width: 1280
+comparison:
+  gemini_model: gemini-1.5-flash
+  llm_provider: auto
+  mode: exact
+  openai_model: gpt-4o-mini
+  rapidfuzz_threshold: 80
+excel:
+  columns:
+    category: Category
+    conversation: Conversation
+    expected_answer: ExpectedAnswer
+    mode: Mode
+    question: Question
+    test_id: TestID
+  input_file: test_cases.xlsx
+  pre_messages_sheet: PreMessages
+execution:
+  max_retries: 2
+  screenshot_on_failure: true
+  screenshots_dir: screenshots
+pre_messages: []
+selectors:
+  bot_message_bubble: div[data-bot-messagebox-bubble='true'], div[class*='_messageWrapper_'],
+    div[class*='_greeting_']
+  iframe: null
+  input_box: input[class*='_input_'], input[class*='mantine-TextInput-input'], input[placeholder*='Here' i], input[placeholder*='mail' i], input[placeholder*='message' i], input[type='text'], input[type='email'], input[type='tel'], input:not([type='hidden'])
+  quick_reply_button: button:not([aria-label]), div[role='button']
+  refresh_button: button[aria-label='Refresh']
+  send_button: button[aria-label='Send message'], button[class*='_sendButton']
+  typing_indicator: div[class*='_loader_'], div[class*='typing'], div[class*='_loaderGlass_']
+  user_message_bubble: div[class*='_userMessageBox_'], div[class*='_userMessage']
+timeouts:
+  bot_reply_timeout_s: 30
+  greeting_wait_ms: 15000
+  message_delay_ms: 800
+  page_load_ms: 60000
+  quiet_period_s: 3
+  typing_delay_ms: 40

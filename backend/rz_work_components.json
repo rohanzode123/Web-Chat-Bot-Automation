@@ -1,0 +1,356 @@
+{
+  "version": "2.0",
+  "platform": "RZ-Work",
+  "total_components": 49,
+  "categories": {
+    "User Input": {
+      "description": "Interactive elements that prompt the user for input or selections.",
+      "components": {
+        "Message": {
+          "description": "Bot sends a text message to the user.",
+          "input_required": false,
+          "interaction_type": "bot_display",
+          "automation_strategy": "wait_and_capture"
+        },
+        "Name": {
+          "description": "Asks for the user's name.",
+          "input_required": true,
+          "interaction_type": "text_input",
+          "validation": "non_empty_string",
+          "automation_strategy": "type_and_enter"
+        },
+        "Phone": {
+          "description": "Asks for phone number, usually validates 10 digits or country code.",
+          "input_required": true,
+          "interaction_type": "phone_input",
+          "validation": "phone_digits",
+          "automation_strategy": "type_and_enter"
+        },
+        "Email": {
+          "description": "Asks for email address via inline input box with dedicated Submit button.",
+          "input_required": true,
+          "interaction_type": "inline_input_submit",
+          "validation": "email_format",
+          "automation_strategy": "type_inline_and_click_submit"
+        },
+        "Date/Appointment": {
+          "description": "Interactive calendar date picker (Mantine DatePicker).",
+          "input_required": true,
+          "interaction_type": "date_picker",
+          "format": "DD/MM/YYYY",
+          "automation_strategy": "select_calendar_day_and_submit"
+        },
+        "Time": {
+          "description": "Asks for time selection or appointment slot.",
+          "input_required": true,
+          "interaction_type": "time_picker_or_text",
+          "format": "HH:MM AM/PM",
+          "automation_strategy": "type_or_select_slot"
+        },
+        "Address": {
+          "description": "Asks for user's street or permanent address.",
+          "input_required": true,
+          "interaction_type": "text_input",
+          "automation_strategy": "type_and_enter"
+        },
+        "Custom Input": {
+          "description": "Generic prompt for custom text or regex validated inputs.",
+          "input_required": true,
+          "interaction_type": "text_input",
+          "automation_strategy": "type_and_enter"
+        },
+        "Multiple Choice": {
+          "description": "Presents multiple choice button pills.",
+          "input_required": true,
+          "interaction_type": "button_list",
+          "automation_strategy": "click_matching_button"
+        },
+        "Yes/No": {
+          "description": "Binary choice buttons for Yes or No.",
+          "input_required": true,
+          "interaction_type": "binary_buttons",
+          "automation_strategy": "click_yes_or_no"
+        },
+        "Image Multi Choice": {
+          "description": "Image cards with clickable selection buttons.",
+          "input_required": true,
+          "interaction_type": "image_card_buttons",
+          "automation_strategy": "click_card_button"
+        },
+        "Multi Select": {
+          "description": "Checklist allowing user to select multiple options and click submit.",
+          "input_required": true,
+          "interaction_type": "multi_checkbox_submit",
+          "automation_strategy": "check_options_and_submit"
+        },
+        "Form": {
+          "description": "Multi-field inline form card with several inputs.",
+          "input_required": true,
+          "interaction_type": "multi_field_form",
+          "automation_strategy": "fill_fields_and_submit"
+        },
+        "Rating": {
+          "description": "Star rating (1-5) or Emoji satisfaction scale.",
+          "input_required": true,
+          "interaction_type": "rating_picker",
+          "automation_strategy": "click_star_or_emoji"
+        },
+        "Database Hub": {
+          "description": "Stores user data in database hub tables.",
+          "input_required": false,
+          "interaction_type": "server_side_sync",
+          "automation_strategy": "verify_sync"
+        },
+        "Welcome Screen": {
+          "description": "Initial welcome screen or greeting card before conversation starts.",
+          "input_required": false,
+          "interaction_type": "greeting",
+          "automation_strategy": "wait_for_greeting"
+        }
+      }
+    },
+    "Media & Rich Content": {
+      "description": "Visual, interactive, or file-based elements.",
+      "components": {
+        "Locate Me (List)": {
+          "description": "Location selection from a predefined list of branches/stores.",
+          "input_required": true,
+          "interaction_type": "list_picker",
+          "automation_strategy": "click_list_item"
+        },
+        "Locate Me (Pin)": {
+          "description": "Asks for GPS coordinates or map pin placement.",
+          "input_required": true,
+          "interaction_type": "map_pin",
+          "automation_strategy": "send_coordinates_or_click_pin"
+        },
+        "Media Display": {
+          "description": "Displays images, videos, audio, or YouTube embeds to user.",
+          "input_required": false,
+          "interaction_type": "media_render",
+          "automation_strategy": "verify_media_rendered"
+        },
+        "Media Download": {
+          "description": "Provides downloadable documents, brochures, or PDF links.",
+          "input_required": false,
+          "interaction_type": "download_link",
+          "automation_strategy": "verify_download_link"
+        },
+        "Media Upload": {
+          "description": "Prompts user to upload an image or document.",
+          "input_required": true,
+          "interaction_type": "file_upload",
+          "automation_strategy": "upload_file_attachment"
+        },
+        "Carousel": {
+          "description": "Horizontal swiping image cards with action buttons.",
+          "input_required": true,
+          "interaction_type": "carousel_card_buttons",
+          "automation_strategy": "swipe_and_click_card"
+        },
+        "Text Carousel": {
+          "description": "Horizontal swiping text cards with action buttons.",
+          "input_required": true,
+          "interaction_type": "carousel_card_buttons",
+          "automation_strategy": "click_card_action"
+        },
+        "Iframe": {
+          "description": "Embeds external web pages or forms in chat.",
+          "input_required": false,
+          "interaction_type": "iframe_embed",
+          "automation_strategy": "switch_to_iframe_if_needed"
+        },
+        "Window Event": {
+          "description": "PostMessage events exchanged with parent hosting window.",
+          "input_required": false,
+          "interaction_type": "window_postmessage",
+          "automation_strategy": "listen_or_trigger_event"
+        }
+      }
+    },
+    "Link & URL": {
+      "description": "Outbound redirects and external links.",
+      "components": {
+        "Link URL": {
+          "description": "Sends external URLs and clickable web links.",
+          "input_required": false,
+          "interaction_type": "link_cta",
+          "automation_strategy": "verify_link_url"
+        }
+      }
+    },
+    "Ticketing": {
+      "description": "Support desk ticket integration.",
+      "components": {
+        "Ticket": {
+          "description": "Creates or updates support ticket in CRM/helpdesk.",
+          "input_required": false,
+          "interaction_type": "server_ticket_create",
+          "automation_strategy": "verify_ticket_confirmation"
+        }
+      }
+    },
+    "Logic & Flow": {
+      "description": "Branching, conditional routing, and conversation flow control.",
+      "components": {
+        "Conditional": {
+          "description": "Splits the flow into different branches based on variables, user input, or regex.",
+          "input_required": false,
+          "interaction_type": "branching_logic",
+          "automation_strategy": "llm_branch_prediction"
+        },
+        "Goal": {
+          "description": "Tracks goal achievement and conversion events.",
+          "input_required": false,
+          "interaction_type": "analytics_goal",
+          "automation_strategy": "verify_goal_reached"
+        },
+        "A/B Testing": {
+          "description": "Splits users between two test paths.",
+          "input_required": false,
+          "interaction_type": "ab_split",
+          "automation_strategy": "detect_active_variant"
+        },
+        "Chat Switch": {
+          "description": "Switch between different chat rooms.",
+          "input_required": false,
+          "interaction_type": "room_switch",
+          "automation_strategy": "follow_room_switch"
+        }
+      }
+    },
+    "Integration & API": {
+      "description": "Third-party services, calendars, maps, and APIs.",
+      "components": {
+        "Google Map": {
+          "description": "Select location on Google Maps widget.",
+          "input_required": true,
+          "interaction_type": "map_location_select",
+          "automation_strategy": "select_map_coordinates"
+        },
+        "Webhook": {
+          "description": "Exchange data over external APIs.",
+          "input_required": false,
+          "interaction_type": "backend_api_call",
+          "automation_strategy": "wait_for_api_response"
+        },
+        "Streaming Webhook": {
+          "description": "Exchange data over external APIs with streaming.",
+          "input_required": false,
+          "interaction_type": "streaming_tokens",
+          "automation_strategy": "wait_for_stream_completion"
+        },
+        "Payment Integrations": {
+          "description": "Ask the user to make payment.",
+          "input_required": true,
+          "interaction_type": "payment_prompt",
+          "automation_strategy": "verify_or_mock_payment"
+        },
+        "Calendly": {
+          "description": "Appointments on Calendly.",
+          "input_required": true,
+          "interaction_type": "calendly_embed",
+          "automation_strategy": "book_calendly_slot"
+        },
+        "Google Calendar": {
+          "description": "Appointments on Google Calendar.",
+          "input_required": true,
+          "interaction_type": "gcal_sync",
+          "automation_strategy": "select_calendar_slot"
+        },
+        "Google Sheets": {
+          "description": "Send/Receive data from Google Sheet.",
+          "input_required": false,
+          "interaction_type": "gsheet_sync",
+          "automation_strategy": "verify_sheet_sync"
+        },
+        "Dialog Flow": {
+          "description": "Check intent with Dialogflow NLP.",
+          "input_required": false,
+          "interaction_type": "nlp_intent_match",
+          "automation_strategy": "llm_semantic_fallback"
+        }
+      }
+    },
+    "Communication & Variables": {
+      "description": "Variable management, email dispatch, and CRM sync.",
+      "components": {
+        "Set Variable": {
+          "description": "Store data in variables.",
+          "input_required": false,
+          "interaction_type": "variable_store",
+          "automation_strategy": "track_variable_state"
+        },
+        "Send Email": {
+          "description": "Send email to users.",
+          "input_required": false,
+          "interaction_type": "email_dispatch",
+          "automation_strategy": "verify_email_triggered"
+        },
+        "Gmail": {
+          "description": "Send emails with your Gmail account.",
+          "input_required": false,
+          "interaction_type": "gmail_api_dispatch",
+          "automation_strategy": "verify_email_triggered"
+        }
+      }
+    },
+    "GenAI & Voice": {
+      "description": "Generative AI models, voice input, intent and entity detection.",
+      "components": {
+        "GenAI": {
+          "description": "Integrate with Generative AI for dynamic conversational replies.",
+          "input_required": true,
+          "interaction_type": "generative_dialogue",
+          "automation_strategy": "llm_semantic_evaluation"
+        },
+        "Intent": {
+          "description": "Natural language intent detection node.",
+          "input_required": true,
+          "interaction_type": "intent_classification",
+          "automation_strategy": "match_user_phrase_to_intent"
+        },
+        "Entity": {
+          "description": "Entity extraction node (dates, names, locations, products).",
+          "input_required": true,
+          "interaction_type": "entity_extraction",
+          "automation_strategy": "verify_entity_captured"
+        }
+      }
+    },
+    "Agent & Live Chat": {
+      "description": "Human agent handoff and live team transfers.",
+      "components": {
+        "Agent Live Chat": {
+          "description": "Transfer control to a live human agent.",
+          "input_required": false,
+          "interaction_type": "live_agent_transfer",
+          "automation_strategy": "detect_agent_join_message"
+        },
+        "Team Live Chat": {
+          "description": "Transfer control to a specific live team/department queue.",
+          "input_required": false,
+          "interaction_type": "team_queue_transfer",
+          "automation_strategy": "detect_team_queue_message"
+        }
+      }
+    },
+    "Block and End Flow": {
+      "description": "Flow modularization and termination nodes.",
+      "components": {
+        "Block": {
+          "description": "Create a reusable block or sub-flow within your conversation tree.",
+          "input_required": false,
+          "interaction_type": "subflow_invocation",
+          "automation_strategy": "traverse_subflow_nodes"
+        },
+        "End the flow": {
+          "description": "Terminates the conversation flow cleanly.",
+          "input_required": false,
+          "interaction_type": "flow_termination",
+          "automation_strategy": "detect_flow_end_and_pass"
+        }
+      }
+    }
+  }
+}
