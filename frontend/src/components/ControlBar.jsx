@@ -87,30 +87,33 @@ export default function ControlBar({
       {/* Speed Settings & Downloads */}
       <div className="flex items-center space-x-4">
         {/* Speed Adjustment */}
-        <div className="flex items-center space-x-2 bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg px-3 py-1.5 shadow-2xs">
+        <div className="flex items-center space-x-2 bg-stone-100 dark:bg-stone-800/80 border border-stone-200 dark:border-stone-700 rounded-lg px-3 py-1.5 shadow-2xs">
           <Sliders className="w-3.5 h-3.5 text-stone-400" />
-          <span className="text-stone-500 dark:text-stone-400 font-medium">Typing Delay:</span>
+          <span className="text-stone-600 dark:text-stone-300 font-medium text-xs">Typing Delay:</span>
           <select
             value={speedConfig.typing_delay_ms}
             onChange={(e) => setSpeedConfig({ ...speedConfig, typing_delay_ms: Number(e.target.value) })}
-            className="bg-transparent font-medium text-stone-800 dark:text-stone-200 focus:outline-hidden cursor-pointer"
+            className="bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-100 border border-stone-300 dark:border-stone-700 rounded px-2 py-0.5 font-medium text-xs focus:outline-hidden cursor-pointer"
           >
-            <option value={15}>Fast (15ms)</option>
-            <option value={40}>Normal (40ms)</option>
-            <option value={80}>Human (80ms)</option>
+            <option value={15} className="bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-100">Fast (15ms)</option>
+            <option value={40} className="bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-100">Normal (40ms)</option>
+            <option value={80} className="bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-100">Human (80ms)</option>
+            <option value={0} className="bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-100">Instant (0ms)</option>
           </select>
 
           <span className="text-stone-300 dark:text-stone-600">|</span>
 
-          <span className="text-stone-500 dark:text-stone-400 font-medium">Wait:</span>
+          <span className="text-stone-600 dark:text-stone-300 font-medium text-xs">Wait:</span>
           <select
             value={speedConfig.message_delay_ms}
             onChange={(e) => setSpeedConfig({ ...speedConfig, message_delay_ms: Number(e.target.value) })}
-            className="bg-transparent font-medium text-stone-800 dark:text-stone-200 focus:outline-hidden cursor-pointer"
+            className="bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-100 border border-stone-300 dark:border-stone-700 rounded px-2 py-0.5 font-medium text-xs focus:outline-hidden cursor-pointer"
           >
-            <option value={400}>0.4s</option>
-            <option value={800}>0.8s</option>
-            <option value={1500}>1.5s</option>
+            <option value={400} className="bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-100">0.4s</option>
+            <option value={800} className="bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-100">0.8s</option>
+            <option value={1200} className="bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-100">1.2s</option>
+            <option value={1500} className="bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-100">1.5s</option>
+            <option value={3000} className="bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-100">3.0s</option>
           </select>
         </div>
 
