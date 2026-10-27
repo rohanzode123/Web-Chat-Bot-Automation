@@ -12,3 +12,4 @@ services:
       - ./screenshots:/app/screenshots
       - ./backend/config.yaml:/app/backend/config.yaml
     restart: unless-stopped
+
