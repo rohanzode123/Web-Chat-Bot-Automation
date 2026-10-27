@@ -103,7 +103,7 @@ export default function SettingsModal({
               <select
                 value={formData.mode}
                 onChange={(e) => setFormData({ ...formData, mode: e.target.value })}
-                className="mt-1 w-full px-3 py-2 rounded-lg border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-white font-medium focus:ring-1 focus:ring-orange-500 focus:outline-hidden"
+                className="mt-1 w-full px-3 py-2 rounded-lg border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-white font-medium focus:ring-1 focus:ring-orange-500 focus:outline-hidden appearance-none cursor-pointer"
               >
                 <option value="semantic">Semantic (RapidFuzz / LLM)</option>
                 <option value="contains">Contains (Keyword / Substring)</option>
@@ -139,7 +139,7 @@ export default function SettingsModal({
               <select
                 value={formData.headless ? "true" : "false"}
                 onChange={(e) => setFormData({ ...formData, headless: e.target.value === "true" })}
-                className="mt-1 w-full px-3 py-2 rounded-lg border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-white font-medium focus:ring-1 focus:ring-orange-500 focus:outline-hidden"
+                className="mt-1 w-full px-3 py-2 rounded-lg border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-white font-medium focus:ring-1 focus:ring-orange-500 focus:outline-hidden appearance-none cursor-pointer"
               >
                 <option value="true">Headless (Background)</option>
                 <option value="false">Headed (Visible Window)</option>
