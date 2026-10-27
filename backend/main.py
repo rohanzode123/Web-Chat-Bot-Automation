@@ -38,6 +38,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Prevent browser from aggressively caching index.html across deploys
+@app.middleware("http")
+async def add_no_cache_for_html(request, call_next):
+    response = await call_next(request)
+    path = request.url.path
+    if path == "/" or path.endswith(".html"):
+        response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+    return response
+
 CONFIG_PATH = os.path.join(os.path.dirname(__file__), "config.yaml")
 SCREENSHOTS_DIR = os.path.join(os.path.dirname(__file__), "..", "screenshots")
 os.makedirs(SCREENSHOTS_DIR, exist_ok=True)
