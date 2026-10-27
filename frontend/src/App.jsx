@@ -9,8 +9,11 @@ import SettingsModal from './components/SettingsModal';
 import DetailModal from './components/DetailModal';
 
 export default function App() {
-  // Theme state
-  const [darkMode, setDarkMode] = useState(true);
+  // Theme state with localStorage persistence
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    return saved ? saved === 'dark' : true;
+  });
 
   // Configuration & Target URL
   const [botUrl, setBotUrl] = useState(
@@ -62,12 +65,14 @@ export default function App() {
   const [wsConnected, setWsConnected] = useState(false);
   const wsRef = useRef(null);
 
-  // Apply dark mode class to html element
+  // Apply dark mode class to html element and persist
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   }, [darkMode]);
 
