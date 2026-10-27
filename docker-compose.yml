@@ -1,0 +1,14 @@
+services:
+  bot-test-studio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rz-work-bot-test-studio
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+    volumes:
+      - ./screenshots:/app/screenshots
+      - ./backend/config.yaml:/app/backend/config.yaml
+    restart: unless-stopped
